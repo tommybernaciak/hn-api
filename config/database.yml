@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  username: <%= ENV.fetch('DATABASE_USERNAME', 'root') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD', '') %>
+
+development: &development
+  <<: *default
+  database: hn_api_development
+
+test: &test
+  <<: *default
+  database: hn_api_test
+
+production:
+  <<: *default
+  database: hn_api_production
