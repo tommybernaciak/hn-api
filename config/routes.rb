@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  get :hello, controller: :application
+  get :test_connection, controller: :application
+
+  get :search, controller: :searches
 end
