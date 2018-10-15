@@ -2,8 +2,8 @@ class SearchResultsSerializer
 
   def self.serialize(results)
     {
-      results: results.hits.map(&method(:serialize_result)),
-      page: results.page
+      results: results.map(&method(:serialize_result)),
+      page: 0
     }
   end
 

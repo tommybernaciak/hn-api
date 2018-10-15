@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181014100551) do
+ActiveRecord::Schema.define(version: 20181015194732) do
 
   create_table "search_note_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20181014100551) do
     t.integer "author_karma_points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "url"
+    t.string "creation_date"
+    t.text "tags"
+    t.integer "search_note_book_id"
   end
 
 end

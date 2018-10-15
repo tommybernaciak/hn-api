@@ -1,9 +1,5 @@
 class SearchResultsController < ApplicationController
 
-  def index
-    render_success(search_results)
-  end
-
   def create
     render_success(search_result_creator.call)
   end
@@ -15,14 +11,10 @@ class SearchResultsController < ApplicationController
 
   def search
     results = perform_search
-    render_success(serialize(results))
+    render_success(serialize(results.hits))
   end
 
   private
-
-  def search_results
-    @search_results ||= SearchResult.all
-  end
 
   def search_result
     @search_result ||= SearchResult.find(params[:id])
@@ -30,12 +22,8 @@ class SearchResultsController < ApplicationController
 
   def search_result_creator
     @search_result_creator ||= begin
-      SearchResultCreator.new(search_result_params: search_result_params)
+      SearchResultsCreator.new(params[:notebook_id], params[:result])
     end
-  end
-
-  def search_result_params
-    @search_result_params ||= params[:search_result]
   end
 
   def perform_search

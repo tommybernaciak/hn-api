@@ -19,6 +19,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do

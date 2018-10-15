@@ -1,5 +1,4 @@
 class NotebooksCreator
-
   def initialize(title)
     @title = title
   end
@@ -16,4 +15,3 @@ class NotebooksCreator
     SearchNoteBook.create(title: title)
   end
 end
-

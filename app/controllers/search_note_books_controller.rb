@@ -3,6 +3,10 @@ class SearchNoteBooksController < ApplicationController
     render_success(notebooks)
   end
 
+  def show
+    render_success(notebook_with_results)
+  end
+
   def create
     render_success(notebooks_creator.call)
   end
@@ -22,10 +26,18 @@ class SearchNoteBooksController < ApplicationController
     @notebook ||= SearchNoteBook.find(params[:id])
   end
 
+  def notebook_with_results
+    {
+      notebook: notebook,
+      results: serialize(notebook.search_results)
+    }
+  end
+
   def notebooks_creator
-    puts params
-    @notebooks_creator ||= begin
-      NotebooksCreator.new(params[:title])
-    end
+    @notebooks_creator ||= NotebooksCreator.new(params[:title])
+  end
+
+  def serialize(results)
+    SearchResultsSerializer.serialize(results)
   end
 end

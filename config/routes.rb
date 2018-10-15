@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :search_results, only: [:index, :create, :destroy] do
     get :search, on: :collection
   end
-  resources :search_note_books, only: [:index, :create, :destroy]
+  resources :search_note_books, only: [:index, :show, :create, :destroy]
 end

@@ -6,7 +6,8 @@ class ResultSerializer
       title: result['title'],
       url: result['url'],
       author: result['author'],
-      points: result['points']
+      points: result['points'],
+      tags: result['_tags']
     }
   end
 end
