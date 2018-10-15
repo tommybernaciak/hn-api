@@ -13,7 +13,7 @@ class HackerNewsSearcher
   end
 
   def call
-    JSON.parse(search)
+    parse(search)
   end
 
   private
@@ -24,6 +24,10 @@ class HackerNewsSearcher
     end
     raise ConnectionError unless response.success?
     response.body
+  end
+
+  def parse(response)
+    OpenStruct.new(JSON.parse(response))
   end
 
   def connection

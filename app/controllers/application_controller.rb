@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   def test_connection
-    render_success('ok')
+    render_success('connected')
   end
 
   private
@@ -9,8 +9,12 @@ class ApplicationController < ActionController::API
     render json: { data: data, status: status }
   end
 
-  def render_failure(ex)
-    json = { message: ex.message, errors: ex.errors, details: ex.details }
-    render json: json, status: ex.status_code
+  def render_failure
+    render json: { message: 'operation failed', status: 500 }
   end
+
+  # def render_failure(ex)
+  #   json = { message: ex.message, errors: ex.errors, details: ex.details }
+  #   render json: json, status: ex.status_code
+  # end
 end
